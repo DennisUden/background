@@ -1,6 +1,15 @@
 @echo off
 echo hello 
 
-mkdir temp 2>nul
-transparent-background --source %cd% --format png --mode base-nightly --resize static --threshold 0.1 --dest temp
-for %%f in (temp\*.png) do (magick "%%f" -trim "%%f")
+mkdir "converted-to-png" 2>nul
+mkdir "background-removed" 2>nul
+
+for %%f in (*.*) do (
+  magick "%%f" -convert "converted-to-png\%%f.png"
+)
+
+transparent-background --source "%cd%\converted-to-png" --format png --mode base-nightly --resize static --threshold 0.1 --dest "background-removed"
+
+for %%f in ("background-removed\*.png") do (
+  magick "%%f" -trim "%%f"
+)
