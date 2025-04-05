@@ -26,3 +26,7 @@
 1. Download the `background.bat` file and save it into your scripts-folder, e.g. `C:\Scripts\background.bat`
 2. Add the scripts-folder to PATH
 3. Inside of the folder containing the images, open a terminal and run `background.bat`
+
+# todo
+1. convert all images to png before transparent-background runs
+2. optional fill transparent area with color / another image after imagemagick trim has finished
